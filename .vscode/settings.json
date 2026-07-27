@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "actionlint",
+    "Anson",
     "arvan",
     "arvancloud",
     "dpkg",
@@ -9,6 +10,9 @@
     "hadolint",
     "hatamiarash",
     "markdownlint",
+    "mvdan",
+    "rhysd",
+    "shellcheck",
     "shfmt"
   ],
   "files.insertFinalNewline": true,

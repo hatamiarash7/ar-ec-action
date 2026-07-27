@@ -6,5 +6,5 @@
 
 - [ ] `shellcheck entrypoint.sh` passes
 - [ ] `docker build .` succeeds
-- [ ] `README.md` is updated if inputs, outputs or behaviour changed
+- [ ] `README.md` is updated if inputs, outputs or behavior changed
 - [ ] `CHANGELOG.md` has an entry under `Unreleased`

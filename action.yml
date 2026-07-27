@@ -1,0 +1,26 @@
+name: "ArvanCloud Edge Computing Action"
+author: "Arash Hatami"
+description: "Deploy new changes to ArvanCloud Edge Computing"
+branding:
+  icon: "cloud"
+  color: "blue"
+
+inputs:
+  auth:
+    description: "Your ArvanCloud API auth token"
+    required: true
+  app:
+    description: "Your application name in ArvanCloud EC"
+    required: true
+  file:
+    description: "Your file for deployment"
+    required: false
+    default: "main.js"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.auth }}
+    - ${{ inputs.app }}
+    - ${{ inputs.file }}

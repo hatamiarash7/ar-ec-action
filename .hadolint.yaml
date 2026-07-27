@@ -1,0 +1,7 @@
+failure-threshold: warning
+ignored:
+  # The base image is pinned through the DEBIAN_TAG build argument.
+  - DL3006
+  # Debian packages are intentionally installed without a version pin so that
+  # security updates are picked up on every build.
+  - DL3008

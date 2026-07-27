@@ -1,0 +1,14 @@
+# Local scratch space used while testing the action
+.tmp/
+tmp/
+*.log
+
+# Editors
+.idea/
+*.swp
+.DS_Store
+
+# Never commit credentials
+.env
+.env.*
+!.env.example

@@ -1,0 +1,38 @@
+name: Release
+
+# Keeps the floating major tag (for example `v1`) pointing at the latest
+# release, so that consumers can pin `hatamiarash7/ar-ec-action@v1`.
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  major-tag:
+    name: Update major tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Move the major tag
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          set -euo pipefail
+
+          case "$RELEASE_TAG" in
+            v[0-9]*) ;;
+            *) echo "Skipping '$RELEASE_TAG': not a version tag"; exit 0 ;;
+          esac
+
+          major="${RELEASE_TAG%%.*}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag --force --annotate "$major" --message "Release $RELEASE_TAG"
+          git push --force origin "refs/tags/$major"

@@ -1,3 +1,19 @@
 {
-  "cSpell.words": ["dearmor", "keyrings"]
+  "cSpell.words": [
+    "actionlint",
+    "arvan",
+    "arvancloud",
+    "dpkg",
+    "endgroup",
+    "esac",
+    "hadolint",
+    "hatamiarash",
+    "markdownlint",
+    "shfmt"
+  ],
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
 }

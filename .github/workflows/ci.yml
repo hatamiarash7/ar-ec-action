@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Lint shell script
+        run: shellcheck entrypoint.sh
+
+      - name: Check shell formatting
+        run: docker run --rm -v "$PWD:/mnt" -w /mnt mvdan/shfmt:v3 --diff entrypoint.sh
+
+      - name: Lint Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+
+      - name: Lint workflows and action metadata
+        run: docker run --rm -v "$PWD:/repo" -w /repo rhysd/actionlint:latest -color
+
+      - name: Lint markdown
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: "**/*.md"
+
+  build:
+    name: Build image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: docker build --tag ar-ec-action:ci .
+
+      - name: Verify the CLI is installed
+        run: docker run --rm --entrypoint /usr/local/bin/arvan ar-ec-action:ci version
+
+      - name: Verify required inputs are enforced
+        run: |
+          if docker run --rm ar-ec-action:ci; then
+            echo "::error::The action should fail when no input is provided"
+            exit 1
+          fi
+
+  integration:
+    name: Run the action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create a bundle
+        run: |
+          mkdir -p dist
+          echo 'addEventListener("fetch", (e) => e.respondWith(new Response("ok")));' > dist/bundle.js
+
+      # A missing bundle must fail fast, before any call to the API.
+      - name: Deploy a bundle that does not exist
+        id: missing
+        continue-on-error: true
+        uses: ./
+        with:
+          auth: not-a-real-token
+          app: ci-smoke-test
+          file: does-not-exist.js
+
+      - name: Assert the deployment failed
+        run: |
+          if [ "${{ steps.missing.outcome }}" != "failure" ]; then
+            echo "::error::Expected the action to fail for a missing bundle file"
+            exit 1
+          fi

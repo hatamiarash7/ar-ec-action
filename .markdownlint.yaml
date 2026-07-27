@@ -1,0 +1,11 @@
+default: true
+
+# Long lines are fine in tables and code samples.
+MD013: false
+# Inline HTML is used for the centered header block.
+MD033: false
+# The changelog repeats "Added"/"Changed" headings across releases.
+MD024:
+  siblings_only: true
+# The README starts with a badge block instead of a heading.
+MD041: false

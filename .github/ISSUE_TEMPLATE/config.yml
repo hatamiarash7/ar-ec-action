@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: ArvanCloud CLI
+    url: https://git.arvancloud.ir/arvancloud/cli
+    about: Report problems with the `arvan` CLI itself here.
+  - name: ArvanCloud documentation
+    url: https://www.arvancloud.ir/docs/edge-computing
+    about: Questions about the Edge Computing platform.

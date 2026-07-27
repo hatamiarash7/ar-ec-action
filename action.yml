@@ -7,20 +7,35 @@ branding:
 
 inputs:
   auth:
-    description: "Your ArvanCloud API auth token"
+    description: "Your ArvanCloud API auth token. Always provide it from a secret."
     required: true
   app:
     description: "Your application name in ArvanCloud EC"
     required: true
   file:
-    description: "Your file for deployment"
+    description: "Bundle file to deploy, relative to `working-directory`"
     required: false
     default: "main.js"
+  working-directory:
+    description: "Directory the `file` input is resolved against"
+    required: false
+    default: ""
+
+outputs:
+  id:
+    description: "Identifier of the created deployment"
+  status:
+    description: "Status of the created deployment, e.g. `pending`"
+  created-at:
+    description: "Creation timestamp of the deployment"
 
 runs:
   using: "docker"
   image: "Dockerfile"
-  args:
-    - ${{ inputs.auth }}
-    - ${{ inputs.app }}
-    - ${{ inputs.file }}
+  # Inputs are passed as environment variables so that the API token is never
+  # part of the container's command line.
+  env:
+    ARVAN_API_KEY: ${{ inputs.auth }}
+    ARVAN_APP: ${{ inputs.app }}
+    ARVAN_FILE: ${{ inputs.file }}
+    ARVAN_WORKDIR: ${{ inputs.working-directory }}

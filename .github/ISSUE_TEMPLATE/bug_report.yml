@@ -1,0 +1,42 @@
+name: Bug report
+description: Report something that does not work as documented
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a report. Please never paste an
+        ArvanCloud API token, even a revoked one, into this issue.
+
+  - type: input
+    id: version
+    attributes:
+      label: Action version
+      description: The ref you use, for example `v1` or a commit SHA.
+      placeholder: v1
+    validations:
+      required: true
+
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Workflow step
+      description: The step that uses this action.
+      render: yaml
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead?
+      description: Include the job log, with any secret removed.
+    validations:
+      required: true

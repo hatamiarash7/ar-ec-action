@@ -12,7 +12,7 @@
 
 set -euo pipefail
 
-readonly ARVAN_BIN="${ARVAN_BIN:-/usr/bin/arvan}"
+readonly ARVAN_BIN="${ARVAN_BIN:-/usr/local/bin/arvan}"
 
 API_KEY="${ARVAN_API_KEY:-}"
 APP="${ARVAN_APP:-}"

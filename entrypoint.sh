@@ -3,7 +3,7 @@
 readonly AUTH="${1:?Error: Please set your API token}"
 readonly APP="${2:?Error: Please set your application name}"
 readonly FILE="${3:?Error: Please set your file for deployment}"
-readonly ARVAN="/usr/bin/arvan"
+readonly ARVAN="/usr/bin/arvan-cli-0.3.0-linux-amd64/arvan"
 
 print_header() {
 	printf "%s\n" "* * * * * * * * * * * * * * * * * * * * *"

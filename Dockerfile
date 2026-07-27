@@ -9,12 +9,12 @@ LABEL org.opencontainers.image.description="Deploy new changes to ArvanCloud Edg
 LABEL org.opencontainers.image.source="https://github.com/hatamiarash7/ar-ec-action"
 
 RUN apt-get update && apt-get install -y \
-    curl gpg && \
-    curl -fsSL https://repo.arvancloud.ir/apt/gpg.key | gpg --dearmor -o /usr/share/keyrings/arvancloud.gpg && \
-    echo "deb [signed-by=/usr/share/keyrings/arvancloud.gpg] https://repo.arvancloud.ir/apt * *" | tee /etc/apt/sources.list.d/arvancloud.list && \
-    apt-get update && apt-get install arvan && \
+    wget curl gpg tar && \
+    wget -q "https://git.arvancloud.ir/arvancloud/cli/-/releases/v0.3.0/downloads/arvan-cli-0.3.0-linux-amd64.tar.gz" -O - | tar -xz -C /usr/bin/ && \
     rm -rf /var/lib/apt/lists/*
 
 COPY entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]

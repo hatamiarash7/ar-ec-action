@@ -38,7 +38,7 @@ get_data() {
 
 deploy() {
 	printf " -----> Deploy\n"
-	ARVAN_API_KEY="$AUTH" "$ARVAN" ec deploy -f "$FILE" "$APP"
+	ARVAN_API_KEY="$AUTH" "$ARVAN" ec deploy -f "/github/workspace/$FILE" "$APP"
 }
 
 main() {

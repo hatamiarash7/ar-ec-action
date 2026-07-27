@@ -5,9 +5,7 @@
 [![Marketplace](https://img.shields.io/badge/marketplace-ar--ec--action-green?logo=github)](https://github.com/marketplace/actions/arvancloud-edge-computing-action)
 
 Deploy a JavaScript bundle to [ArvanCloud Edge Computing](https://www.arvancloud.ir/en/products/edge-computing)
-from a GitHub workflow. The action runs the official
-[`arvan` CLI](https://git.arvancloud.ir/arvancloud/cli) inside a container, so
-there is nothing to install on the runner.
+from a GitHub workflow.
 
 ## Usage
 
@@ -151,7 +149,7 @@ state.
 
 [![Donate with Bitcoin](https://img.shields.io/badge/Bitcoin-bc1qmmh6vt366yzjt3grjxjjqynrrxs3frun8gnxrz-orange)](https://donatebadges.ir/donate/Bitcoin/bc1qmmh6vt366yzjt3grjxjjqynrrxs3frun8gnxrz) [![Donate with Ethereum](https://img.shields.io/badge/Ethereum-0x0831bD72Ea8904B38Be9D6185Da2f930d6078094-blueviolet)](https://donatebadges.ir/donate/Ethereum/0x0831bD72Ea8904B38Be9D6185Da2f930d6078094)
 
-<div><a href="https://payping.ir/@hatamiarash7"><img src="https://cdn.payping.ir/statics/Payping-logo/Trust/blue.svg" height="128" width="128"></a></div>
+<div><a href="https://payping.ir/@hatamiarash7"><img alt="payping" src="https://cdn.payping.ir/statics/Payping-logo/Trust/blue.svg" height="128" width="128"></a></div>
 
 ## Contributing 🤝
 

@@ -6,9 +6,9 @@ FROM debian:${DEBIAN_TAG} AS downloader
 
 # Release assets live at https://git.arvancloud.ir/arvancloud/cli/-/releases
 # Checksums come from the "arvan-cli-<version>-checksums.txt" release asset.
-ARG ARVAN_CLI_VERSION=0.3.0
-ARG ARVAN_CLI_SHA256_AMD64=6c4a3dc8eb78325621ee11bf58b2b9279d3321655ce1190765161f67cdd991ab
-ARG ARVAN_CLI_SHA256_ARM64=105db6fe4f6b90424610bef21892ad4ed53f756eb44821a08dec51ed088da5a1
+ARG ARVAN_CLI_VERSION=0.4.0
+ARG ARVAN_CLI_SHA256_AMD64=33f633ee7471ca0d733fb5a25cca66dac7542eddbb584d28ac19e6ab16ca8e80
+ARG ARVAN_CLI_SHA256_ARM64=c943766c6a0a3ad4ea676db94b9ab32333794c67762943fcae83c4750d095752
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -36,12 +36,12 @@ RUN set -euo pipefail; \
 
 FROM debian:${DEBIAN_TAG}
 
-ARG ARVAN_CLI_VERSION=0.3.0
+ARG ARVAN_CLI_VERSION=0.4.0
 
 LABEL maintainer="Arash Hatami <hatamiarash7@gmail.com>" \
     org.opencontainers.image.title="ArvanCloud Edge Computing Action" \
     org.opencontainers.image.description="Deploy new changes to ArvanCloud Edge Computing" \
-    org.opencontainers.image.version="1.0.0" \
+    org.opencontainers.image.version="1.0.1" \
     org.opencontainers.image.authors="hatamiarash7" \
     org.opencontainers.image.vendor="hatamiarash7" \
     org.opencontainers.image.licenses="MIT" \

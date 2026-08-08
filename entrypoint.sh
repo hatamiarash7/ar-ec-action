@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 #
-# Entrypoint of the ArvanCloud Edge Computing Action.
+# Entrypoint of the Arvancloud Edge Computing Action.
 #
 # Every input is passed as an environment variable by action.yml so that the
 # API token never appears in the container's command line:
 #
-#   ARVAN_API_KEY  ArvanCloud API token                        (required)
+#   ARVAN_API_KEY  Arvancloud API token                        (required)
 #   ARVAN_APP      Edge Computing application name             (required)
 #   ARVAN_FILE     Bundle file to deploy                       (required)
 #   ARVAN_WORKDIR  Directory ARVAN_FILE is resolved against    (optional)
@@ -45,7 +45,7 @@ set_output() {
 write_summary() {
 	[ -n "${GITHUB_STEP_SUMMARY:-}" ] || return 0
 	cat >>"$GITHUB_STEP_SUMMARY" <<-EOF
-		## ArvanCloud Edge Computing deployment
+		## Arvancloud Edge Computing deployment :rocket:
 
 		| Field | Value |
 		| --- | --- |
@@ -57,11 +57,14 @@ write_summary() {
 }
 
 print_header() {
-	printf '%s\n' "* * * * * * * * * * * * * * * * * * * * *"
-	printf '%s\n' "*                                       *"
-	printf '%s\n' "*   ArvanCloud Edge Computing Action    *"
-	printf '%s\n' "*                                       *"
-	printf '%s\n' "* * * * * * * * * * * * * * * * * * * * *"
+	printf '%s\n' "          ++++                                                                 "
+	printf '%s\n' "         +++++++                                                               "
+	printf '%s\n' "          +++++++          _                               _                 _ "
+	printf '%s\n' "           +++++++        / \   _ ____   ____ _ _ __   ___| | ___  _   _  __| |"
+	printf '%s\n' "            +++++++      / _ \ | '__\ \ / / _\` | '_ \ / __| |/ _ \| | | |/ _\` |"
+	printf '%s\n' " +++++       +++++++    / ___ \| |   \ V / (_| | | | | (__| | (_) | |_| | (_| |"
+	printf '%s\n' "+++++++       +++++++  /_/   \_\_|    \_/ \__,_|_| |_|\___|_|\___/ \__,_|\__,_|"
+	printf '%s\n' " +++++          ++++                                                           "
 	printf '\n'
 }
 

@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Update the logo and the header of the job summary.
+- Improve documentation.
 
 ## [1.0.2]
 

@@ -45,7 +45,7 @@ set_output() {
 write_summary() {
 	[ -n "${GITHUB_STEP_SUMMARY:-}" ] || return 0
 	cat >>"$GITHUB_STEP_SUMMARY" <<-EOF
-		### ArvanCloud Edge Computing deployment
+		## ArvanCloud Edge Computing deployment
 
 		| Field | Value |
 		| --- | --- |

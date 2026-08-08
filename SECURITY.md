@@ -5,9 +5,9 @@
 Fixes are released for the latest major tag only.
 
 | Version | Supported |
-| --- | --- |
-| `v1` | Yes |
-| Older | No |
+| ------- | --------- |
+| `v1`    | Yes       |
+| Older   | No        |
 
 ## Reporting a vulnerability
 

@@ -32,10 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Inputs are passed as environment variables instead of container arguments, so
-  the API token no longer appears on the command line.
-- The image is built in two stages, leaving no download tooling in the runtime
-  image.
+- Inputs are passed as environment variables instead of container arguments, so the API token no longer appears on the command line.
+- The image is built in two stages, leaving no download tooling in the runtime image.
 - Failures now produce a GitHub error annotation instead of a bare exit code.
 
 ## [1.0.0]
